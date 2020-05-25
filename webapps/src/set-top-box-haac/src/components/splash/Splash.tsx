@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Preloadable, useAura, useBackground } from 'la-web-sdk';
-import { AuraCommands } from 'toh-common';
+import { AuraCommands } from '../../../../common';
 import './Splash.scss';
 import bg from '../../assets/batman-splash.svg';
 
