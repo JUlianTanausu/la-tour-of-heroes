@@ -1,0 +1,13 @@
+{
+	"name": "toh-common",
+	"version": "1.0.0",
+	"description": "Common files for MH and STB LAs",
+	"main": "dist/index.js",
+	"source": "index.ts",
+	"scripts": {
+	  "preinstall": "tsc"
+	},
+	"author": "",
+	"license": "ISC"
+  }
+  

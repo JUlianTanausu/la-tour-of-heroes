@@ -1,0 +1,30 @@
+{
+	"name": "la-tour-webapps",
+	"version": "1.1.1",
+	"description": "Webapps for LA Tour of Heroes",
+	"private": true,
+	"scripts": {
+		"browser:mh": "npm run --prefix src/movistar-home browser",
+		"browser:stb": "npm run --prefix src/set-top-box-haac browser",
+		"browser:mh:mock": "npm run --prefix src/movistar-home browser:mock",
+		"browser:stb:mock": "npm run --prefix src/set-top-box-haac browser:mock",
+		"build": "rm -rf build/* && npm run build:mh && npm run build:stb && mv src/movistar-home/build/ build/movistar-home && mv src/set-top-box-haac/build/ build/set-top-box-haac",
+		"build:mock": "rm -rf build/* && npm run build:mh:mock && npm run build:stb:mock&& mv src/movistar-home/build/ build/movistar-home && mv src/set-top-box-haac/build/ build/set-top-box-haac",
+		"build:mh": "mpm run --prefix src/movistar-home build",
+		"build:mh:mock": "npm run --prefix src/movistar-home build:mock",
+		"build:stb": "npm run --prefix src/set-top-box-haac build",
+		"build:stb:mock": "npm run --prefix src/set-top-box-haac build:mock",
+		"cleanup": "npm run cleanup:mh; npm run cleanup:stb",
+		"cleanup:mh": "npm run --prefix src/movistar-home cleanup",
+		"cleanup:stb": "npm run --prefix src/set-top-box-haac cleanup",
+		"install": "npm run install:mh && npm run install:stb",
+		"install:stb": "npm --prefix src/set-top-box-haac install",
+		"install:mh": "npm --prefix src/movistar-home install",
+		"device:stb": "./scripts/stb-url-launcher.js",
+		"device:mh": "echo \"Error: no implemented yet -> adb install <apk-file> && adb shell am start -n <webview-activity> -e <url-to-open>\" && exit 1",
+		"remoteConsole": "open http://localhost:8080/client/ ; node_modules/weinre/weinre --boundHost -all-"
+	},
+	"keywords": [],
+	"author": "Telefónica",
+	"license": "ISC"
+}

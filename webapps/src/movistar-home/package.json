@@ -1,0 +1,39 @@
+{
+  "name": "toh-movistar-home",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "gh-pages": "^2.1.1",
+    "la-web-sdk": "Telefonica/aura-la-web-sdk#react",
+    "node-sass": "^4.13.1",
+    "react-app-polyfill": "^1.0.6",
+    "react-scripts": "3.4.0",
+    "typescript": "^3.7.5"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.22",
+    "@types/react-dom": "^16.9.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "scripts": {
+    "browser": "npm link ../common && react-scripts start",
+    "browser:mock": "REACT_APP_AURA_MOCK_CLIENT=true npm run browser",
+    "build": "npm link ../common && react-scripts build",
+    "cleanup": "rm -rf node_modules || true; rm package-lock.json || true",
+    "eject": "react-scripts eject",
+    "deploy": "./scripts/deploy-to-ghpages.js"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      "chrome 24"
+    ],
+    "development": [
+      "chrome 24"
+    ]
+  },
+  "homepage": "./"
+}

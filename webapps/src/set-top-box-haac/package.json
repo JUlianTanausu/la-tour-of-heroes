@@ -1,0 +1,43 @@
+{
+  "name": "toh-set-top-box-haac",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "gh-pages": "^2.1.1",
+    "la-web-sdk": "Telefonica/aura-la-web-sdk#react",
+    "node-sass": "^4.13.1",
+    "react-app-polyfill": "^1.0.6"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
+    "typescript": "^3.7.5"
+  },
+  "scripts": {
+    "browser": "npm link ../common && react-scripts start",
+    "browser:mock": "REACT_APP_AURA_MOCK_CLIENT=true npm run browser",
+    "build": "npm link ../common && react-scripts build",
+    "build:mock": "REACT_APP_AURA_MOCK_CLIENT=true npm link ../common && react-scripts build",
+    "cleanup": "rm -rf node_modules; rm package-lock.json",
+    "eject": "react-scripts eject",
+    "deploy": "./scripts/deploy-to-ghpages.js"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
