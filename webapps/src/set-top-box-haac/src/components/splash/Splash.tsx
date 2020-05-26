@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
-import { Preloadable, useBackground } from 'la-web-sdk';
+import { Preloadable, useAura, useBackground } from 'la-web-sdk';
+import { AuraCommands } from 'toh-common';
 import './Splash.scss';
 import bg from '../../assets/batman-splash.svg';
 
 export const SplashComponent = ({ onReady }: Preloadable) => {
+	const aura = useAura();
 	const background = useBackground();
 
 	useEffect(() => {
+		aura.sendCommand(AuraCommands.getHome());
 		background.setBackground(bg, (img) => {
 			if (!img) {
 				background.setBackgroundColor('#28ACD1');

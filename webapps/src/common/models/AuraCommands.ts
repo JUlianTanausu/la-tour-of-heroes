@@ -5,6 +5,14 @@ export default class AuraCommands {
 		return this.getAuraCommand('intent.tour-of-heroes.home');
 	}
 
+	static getHeroes() {
+		return this.getAuraCommand('intent.tour-of-heroes.heroes');
+	}
+
+	static getVillains() {
+		return this.getAuraCommand('intent.tour-of-heroes.villains');
+	}
+
 	static getAuraCommandSingle(intent: string, entity: any) {
 		return this.getAuraCommand(intent, [entity]);
 	}

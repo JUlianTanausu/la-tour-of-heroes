@@ -1,6 +1,6 @@
 const script = {
 	"intent.living-app.start": () => splash,
-	"intent.tour-of-heroes.home": () => { },
+	"intent.tour-of-heroes.home": () => home,
 	"intent.tour-of-heroes.qna": () => { },
 	"intent.operation.tour-of-heroes.back": () => { },
 	"intent.operation.sdk.persist": () => { },
@@ -15,6 +15,14 @@ const splash = {
 	],
 	"screen": "splash"
 };
+
+const home = {
+	"activeChannels": [
+		"movistar-home",
+		"set-top-box-haac"
+	],
+	"screen": "home"
+}
 
 const close = {
 	"activeChannels": [
