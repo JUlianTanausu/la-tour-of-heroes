@@ -1,0 +1,25 @@
+.hero-wrapper {
+    h1 {
+        text-align: center;
+        font-size: 125px;
+    }
+
+    img {
+        height: 500px;
+        position: fixed;
+        left: 226px;
+        top: 320px;
+    }
+
+    .hero-info {
+        position: fixed;
+        top: 320px;
+        left: 1000px;
+        font-size: 50px;
+        max-width: 700px;
+
+        li+li {
+            margin-top: 15px;
+        }
+    }
+}

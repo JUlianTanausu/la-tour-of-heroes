@@ -9,6 +9,14 @@ export default class AuraCommands {
 		return this.getAuraCommand('intent.tour-of-heroes.heroes');
 	}
 
+	static getNext() {
+		return this.getAuraCommand('intent.operation.tour-of-heroes.next');
+	}
+
+	static getPrevious() {
+		return this.getAuraCommand('intent.operation.tour-of-heroes.previous');
+	}
+
 	static getVillains() {
 		return this.getAuraCommand('intent.tour-of-heroes.villains');
 	}
