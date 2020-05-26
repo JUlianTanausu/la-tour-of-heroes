@@ -1,22 +1,8 @@
 import './Heroes.scss';
-
-import {
-	Footer,
-	KeyCode,
-	KeyEvent,
-	NavigableButton,
-	Preloadable,
-	useActions,
-	useAura,
-	useBackground,
-	useInput,
-} from 'la-web-sdk';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { Footer, KeyCode, KeyEvent, NavigableButton, Preloadable, useActions, useAura, useBackground, useInput } from 'la-web-sdk';
 import { AuraCommands } from '../../../../common';
-
 import { Hero } from './hero/Hero';
-
-
 
 export const HeroesComponent = ({ onReady }: Preloadable) => {
 	const aura = useAura();

@@ -1,6 +1,6 @@
-import { NavigableWrapper } from 'la-web-sdk';
-import React from 'react';
 import './Hero.scss';
+import React from 'react';
+import { NavigableWrapper } from 'la-web-sdk';
 
 
 type Hero = {
