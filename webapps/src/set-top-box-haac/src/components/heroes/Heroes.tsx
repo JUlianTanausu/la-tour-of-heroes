@@ -1,12 +1,27 @@
 import './Heroes.scss';
-import React, { useCallback, useEffect, useState, useRef } from 'react';
-import { Preloadable, useAura, useInput, KeyEvent, KeyCode, useBackground, useActions } from 'la-web-sdk';
+
+import {
+	Footer,
+	KeyCode,
+	KeyEvent,
+	NavigableButton,
+	Preloadable,
+	useActions,
+	useAura,
+	useBackground,
+	useInput,
+} from 'la-web-sdk';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { AuraCommands } from '../../../../common';
+
 import { Hero } from './hero/Hero';
+
+
 
 export const HeroesComponent = ({ onReady }: Preloadable) => {
 	const aura = useAura();
 	const background = useBackground();
+	const [heroFocused, setHeroFocused] = useState<boolean>(true);
 	const [currentHero, setCurrentHero] = useState<number>(aura.getData().current);
 	const data = useRef(aura.getData());
 
@@ -14,17 +29,24 @@ export const HeroesComponent = ({ onReady }: Preloadable) => {
 	const onKeyPressed = useCallback((e: KeyEvent) => {
 		switch (e.data.keyCode) {
 			case KeyCode.KEY_LEFT:
-				aura.sendCommand(AuraCommands.getPrevious());
+				heroFocused && aura.sendCommand(AuraCommands.getPrevious());
 				break;
 			case KeyCode.KEY_RIGHT:
-				aura.sendCommand(AuraCommands.getNext());
+				heroFocused && aura.sendCommand(AuraCommands.getNext());
+				break;
+			case KeyCode.KEY_UP:
+				!heroFocused && setHeroFocused(true);
+				break;
+			case KeyCode.KEY_DOWN:
+				heroFocused && setHeroFocused(false);
 				break;
 		}
-	}, [aura]);
+
+	}, [aura, heroFocused]);
 	useInput(onKeyPressed);
 
 	// Handle Aura actions
-	const actionsHandler =	useCallback((actions: any[]) => {
+	const actionsHandler = useCallback((actions: any[]) => {
 		if (actions && actions.length > 0) {
 			const hasNewIndex = actions[0].parameters?.newIndex !== undefined;
 			const newIndex = actions[0]?.parameters?.newIndex;
@@ -54,11 +76,28 @@ export const HeroesComponent = ({ onReady }: Preloadable) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
+	const goBack = useCallback(() => {
+		aura.sendCommand(AuraCommands.getBack());
+	}, [aura]);
+
+	const goToVillains = useCallback(() => {
+		aura.sendCommand(AuraCommands.getVillains());
+	}, [aura]);
+
 	return (
 		<div id="heroes-wrapper">
 			{
-				<Hero hero={data.current.heroes[currentHero]} />
+				<Hero hero={data.current.heroes[currentHero]} current={currentHero} focused={heroFocused}/>
 			}
+			<Footer>
+				<NavigableButton onClick={goBack} id='back-button' defaultClass='button' focusedClass='focused-button'>
+					Atrás
+				</NavigableButton>
+				<NavigableButton onClick={goToVillains} id='villains-button' defaultClass='villains-button button'
+					focusedClass='focused-button'>
+					Ver Villanos
+				</NavigableButton>
+			</Footer>
 		</div>
 	)
 }

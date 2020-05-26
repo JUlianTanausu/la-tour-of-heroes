@@ -1,18 +1,29 @@
 let currentHero = 0;
 let currentVillain = 0;
+let breadcrumbs = [];
+
+let lastResponse:any = undefined;
 
 let currentScreen = 'heroes';
 
 const script = {
 	"intent.living-app.start": () => splash,
-	"intent.tour-of-heroes.home": () => home,
-	"intent.tour-of-heroes.heroes": (data) => {
-		currentScreen = "heroes";
-		return { ...heroes, current: currentHero }
+	"intent.tour-of-heroes.home": () => {
+		lastResponse && breadcrumbs.push(lastResponse);
+		lastResponse = home;
+		return home;
 	},
-	"intent.tour-of-heroes.villains": (data) => {
+	"intent.tour-of-heroes.heroes": () => {
+		breadcrumbs.push(lastResponse);
+		lastResponse = { ...heroes, current: currentHero };
+		currentScreen = "heroes";
+		return lastResponse;
+	},
+	"intent.tour-of-heroes.villains": () => {
+		breadcrumbs.push(lastResponse);
+		lastResponse = { ...villains, current: currentHero }
 		currentScreen = "villains";
-		return { ...villains, current: currentHero }
+		return lastResponse;
 	},
 	"intent.operation.tour-of-heroes.next": () => {
 		let newIndex = 0;
@@ -49,7 +60,10 @@ const script = {
 		return operationPrevious(newIndex, oldIndex);
 	},
 	"intent.tour-of-heroes.qna": () => { },
-	"intent.operation.tour-of-heroes.back": () => { },
+	"intent.operation.tour-of-heroes.back": () => {
+		lastResponse = breadcrumbs.pop() || home;
+		return lastResponse;
+	 },
 	"intent.operation.sdk.persist": () => { },
 	"Atrás": () => { },
 	"intent.living-app.close": () => close,
@@ -111,7 +125,7 @@ const heroes = {
 			"loveInterest": "Prepper Petts",
 			"nemesis": "Sonaht",
 			"group": "Vindicators",
-			"icon": "https://movistarhome-test.s3.amazonaws.com/test-carol/tour-of-heroes/assets/manbat.svg",
+			"icon": "https://movistarhome-test.s3.amazonaws.com/test-carol/tour-of-heroes/assets/steelman.svg",
 			"bgColor": "black",
 			"secondaryColor": "red"
 		}, {
@@ -121,7 +135,7 @@ const heroes = {
 			"loveInterest": "Maria Juana",
 			"nemesis": "Blue Elf",
 			"group": "Vindicators",
-			"icon": "https://movistarhome-test.s3.amazonaws.com/test-carol/tour-of-heroes/assets/manbat.svg",
+			"icon": "https://movistarhome-test.s3.amazonaws.com/test-carol/tour-of-heroes/assets/manspider.svg",
 			"bgColor": "white",
 			"color": "blue",
 			"secondaryColor": "red"

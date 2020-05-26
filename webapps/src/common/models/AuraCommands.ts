@@ -21,6 +21,10 @@ export default class AuraCommands {
 		return this.getAuraCommand('intent.tour-of-heroes.villains');
 	}
 
+	static getBack() {
+		return this.getAuraCommand('intent.operation.tour-of-heroes.back');
+	}
+
 	static getAuraCommandSingle(intent: string, entity: any) {
 		return this.getAuraCommand(intent, [entity]);
 	}
