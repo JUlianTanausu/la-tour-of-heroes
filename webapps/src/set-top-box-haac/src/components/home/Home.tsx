@@ -8,15 +8,16 @@ export const HomeComponent = ({ onReady }: Preloadable) => {
 
 	useEffect(() => {
 		onReady();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const goToHeroes = useCallback(() => {
 		debounce(() => aura.sendCommand(AuraCommands.getHeroes()), 3000);
-	}, [aura.sendCommand]);
+	}, [aura]);
 
 	const goToVillains = useCallback(() => {
 		debounce(() => aura.sendCommand(AuraCommands.getVillains()), 3000);
-	}, [aura.sendCommand]);
+	}, [aura]);
 
 	return (
 		<div id='home-wrapper'>

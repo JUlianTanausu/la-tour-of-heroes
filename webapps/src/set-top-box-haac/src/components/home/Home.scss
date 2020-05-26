@@ -2,18 +2,22 @@
 
     >div {
         height: 1080px;
-        width: 50%;
+        width: 960px;
         text-align: center;
         line-height: 1080px;
+        box-sizing: content-box;
+        position: fixed;
+        top: 0;
+        left: 0;
     }
 
     #heroes-wrapper {
         background-color: #FFF257;
-        float: right;
     }
 
     #villains-wrapper {
         background-color: #E01F5D;
+        left: 960px;
     }
 
     .home-button {
