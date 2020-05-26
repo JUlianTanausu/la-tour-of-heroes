@@ -1,7 +1,7 @@
 import './Home.scss';
 import React, { useCallback, useEffect } from 'react';
 import { Preloadable, useAura, debounce, NavigableButton } from 'la-web-sdk';
-import { AuraCommands } from 'toh-common';
+import { AuraCommands } from '../../../../common';
 
 export const HomeComponent = ({ onReady }: Preloadable) => {
 	const aura = useAura();
