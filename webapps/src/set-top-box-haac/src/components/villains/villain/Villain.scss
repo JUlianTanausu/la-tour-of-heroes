@@ -1,0 +1,35 @@
+.villain-wrapper {
+    height: 600px;
+    width: 500px;
+    display: inline-block;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 2px transparent solid;
+
+    h1 {
+        font-size: 50px;
+    }
+
+    img {
+        height: 200px;
+    }
+
+    +.villain-wrapper {
+        margin-left: 10px;
+    }
+
+    &.focused {
+        box-shadow: 20px 20px black, -20px -20px black;
+    }
+
+    .villain-info {
+        font-size: 40px;
+
+        li {
+            padding: 10px;
+            width: auto;
+            height: auto;
+            white-space: normal;
+        }
+    }
+}

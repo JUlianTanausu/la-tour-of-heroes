@@ -21,7 +21,7 @@ const script = {
 	},
 	"intent.tour-of-heroes.villains": () => {
 		breadcrumbs.push(lastResponse);
-		lastResponse = { ...villains, current: currentHero }
+		lastResponse = villains;
 		currentScreen = "villains";
 		return lastResponse;
 	},
@@ -34,11 +34,6 @@ const script = {
 				currentHero = (currentHero + 1) % heroes.heroes.length;
 				newIndex = currentHero;
 				break;
-			case "villains":
-				oldIndex = currentVillain;
-				currentVillain = (currentVillain + 1) % villains.villains.length;
-				newIndex = currentVillain;
-				break;
 		}
 		return operationNext(newIndex, oldIndex);
 	},
@@ -50,11 +45,6 @@ const script = {
 				oldIndex = currentHero;
 				currentHero = (heroes.heroes.length + currentHero - 1) % heroes.heroes.length;
 				newIndex = currentHero;
-				break;
-			case "villains":
-				oldIndex = currentVillain;
-				currentVillain = (villains.villains.length + currentHero - 1) % villains.villains.length;
-				newIndex = currentVillain;
 				break;
 		}
 		return operationPrevious(newIndex, oldIndex);
@@ -123,7 +113,7 @@ const heroes = {
 			"realName": "Antonio Claro",
 			"superpower": "Super rich too",
 			"loveInterest": "Prepper Petts",
-			"nemesis": "Sonaht",
+			"nemesis": "El Notas",
 			"group": "Vindicators",
 			"icon": "https://movistarhome-test.s3.amazonaws.com/test-carol/tour-of-heroes/assets/steelman.svg",
 			"bgColor": "black",
@@ -151,19 +141,33 @@ const villains = {
 			"nemesis": "Manbat",
 			"superpower": "Chemical engineering",
 			"icon": "https://movistarhome-test.s3.amazonaws.com/test-carol/tour-of-heroes/assets/prankster.svg",
-			"bgColor": "#20d63e"
+			"bgColor": "#20d63e",
+			"color": "black",
+			"secondaryColor": "white"
 		}, {
-			"name": "Sonaht",
+			"name": "El Notas",
 			"nemesis": "All Vindicators",
 			"superpower": "Infinity Stones",
-			"icon": "https://movistarhome-test.s3.amazonaws.com/test-carol/tour-of-heroes/assets/prankster.svg",
-			"bgColor": "#c2b200"
+			"icon": "https://movistarhome-test.s3.amazonaws.com/test-carol/tour-of-heroes/assets/notas.svg",
+			"bgColor": "#c2b200",
+			"color": "green",
+			"secondaryColor": "#fbbe00"
 		}, {
 			"name": "Blue Elf",
 			"nemesis": "Manspider",
 			"superpower": "Strength, reflexes, agility",
-			"icon": "https://movistarhome-test.s3.amazonaws.com/test-carol/tour-of-heroes/assets/prankster.svg",
-			"bgColor": "#009130"
+			"icon": "https://movistarhome-test.s3.amazonaws.com/test-carol/tour-of-heroes/assets/blue-elf.svg",
+			"bgColor": "#009130",
+			"color": "black",
+			"secondaryColor": "blue"
+		}, {
+			"name": "Loko",
+			"nemesis": "Ther",
+			"superpower": "Astral projection, illusions, strength",
+			"icon": "https://movistarhome-test.s3.amazonaws.com/test-carol/tour-of-heroes/assets/loko.svg",
+			"bgColor": "rgb(120, 0, 145)",
+			"color": "green",
+			"secondaryColor": "#d1a400"
 		},
 	]
 };
