@@ -1,12 +1,13 @@
 import './Heroes.scss';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Footer, KeyCode, KeyEvent, NavigableButton, Preloadable, useActions, useAura, useBackground, useInput } from 'la-web-sdk';
+import { Footer, KeyCode, KeyEvent, NavigableButton, Preloadable, useActions, useAura, useBackground, useInput, useVideo } from 'la-web-sdk';
 import { AuraCommands } from '../../../../common';
 import { Hero } from './hero/Hero';
 
 export const HeroesComponent = ({ onReady }: Preloadable) => {
 	const aura = useAura();
 	const background = useBackground();
+	const video = useVideo();
 	const [heroFocused, setHeroFocused] = useState<boolean>(true);
 	const [currentHero, setCurrentHero] = useState<number>(aura.getData().current);
 	const data = useRef(aura.getData());
@@ -48,17 +49,26 @@ export const HeroesComponent = ({ onReady }: Preloadable) => {
 	}, [setCurrentHero]);
 	useActions(actionsHandler);
 
-	// Update bg color whenever we switch heroes
+	// Update bg color and play its video whenever we switch heroes
 	useEffect(() => {
+		let videoUrl = data.current.heroes[currentHero].bgVideo;
 		background.setBackgroundColor(data.current.heroes[currentHero].bgColor);
+
+		if (videoUrl) {
+			video.playVideo(videoUrl, true);
+		} else {
+			video.stopVideo();
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps 
 	}, [currentHero]);
 
 	useEffect(() => {
 		background.clearBackground();
-		background.setBackgroundColor(data.current.heroes[currentHero].bgColor);
-		console.log("onready");
+
 		onReady();
+		return () => {
+			video.stopVideo();
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -73,7 +83,7 @@ export const HeroesComponent = ({ onReady }: Preloadable) => {
 	return (
 		<div id="heroes-wrapper">
 			{
-				<Hero hero={data.current.heroes[currentHero]} current={currentHero} focused={heroFocused}/>
+				<Hero hero={data.current.heroes[currentHero]} current={currentHero} focused={heroFocused} />
 			}
 			<Footer>
 				<NavigableButton onClick={goBack} id='back-button' defaultClass='button' focusedClass='focused-button'>

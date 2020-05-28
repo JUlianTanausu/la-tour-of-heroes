@@ -107,7 +107,8 @@ const heroes = {
 			"group": "Righteousness Union",
 			"icon": "https://movistarhome-test.s3.amazonaws.com/test-carol/tour-of-heroes/assets/manbat.svg",
 			"bgColor": "#0d751e",
-			"secondaryColor": "black"
+			"secondaryColor": "black",
+			"bgVideo": "https://movistarhome-test.s3.amazonaws.com/test-carol/tour-of-heroes/assets/manbat.mp4"
 		}, {
 			"name": "Steel Man",
 			"realName": "Antonio Claro",

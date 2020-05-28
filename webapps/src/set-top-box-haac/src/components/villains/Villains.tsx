@@ -4,7 +4,7 @@ import { BaseCarousel, Preloadable, useAura, useBackground, Footer, NavigableBut
 import React, { useEffect, useCallback, useState, useRef } from 'react';
 
 import { Villain } from './villain/Villain';
-import { AuraCommands } from 'toh-common';
+import { AuraCommands } from '../../../../common';
 
 
 export const VillainsComponent = ({ onReady }: Preloadable) => {
@@ -15,8 +15,6 @@ export const VillainsComponent = ({ onReady }: Preloadable) => {
 	const [currentVillain, setCurrentVillain] = useState<number>(0);
 
 	const onKeyPressed = useCallback((e: KeyEvent) => {
-		console.log("ble");
-		console.log(currentVillain);
 		switch (e.data.keyCode) {
 			case KeyCode.KEY_LEFT:
 				villainFocused && currentVillain > 0 && setCurrentVillain(old => (villains.current.length + old - 1) % villains.current.length);
@@ -28,7 +26,6 @@ export const VillainsComponent = ({ onReady }: Preloadable) => {
 				!villainFocused && setVillainFocused(true);
 				break;
 			case KeyCode.KEY_DOWN:
-				console.log("ble");
 				villainFocused && setVillainFocused(false);
 				break;
 		}
