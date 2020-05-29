@@ -1,7 +1,8 @@
 import 'react-app-polyfill/stable';
-import './App.css';
+import './index.css';
 import { init, Channel } from 'la-web-sdk';
-import { script } from 'toh-common';
+import { script } from '../../common'
+;
 
 init({
   channel: Channel.STB,

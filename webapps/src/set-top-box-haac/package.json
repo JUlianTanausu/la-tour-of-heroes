@@ -3,27 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "gh-pages": "^2.1.1",
-    "la-web-sdk": "Telefonica/aura-la-web-sdk#react",
-    "node-sass": "^4.13.1",
-    "react-app-polyfill": "^1.0.6"
+    "la-web-sdk": "Telefonica/aura-la-web-sdk#react"
   },
   "devDependencies": {
-    "@types/react": "^16.9.35",
-    "@types/react-dom": "^16.9.8",
+    "@types/react": "^16.9.22",
+    "@types/react-dom": "^16.9.5",
+    "customize-cra": "^0.9.1",
+    "node-sass": "^4.13.1",
     "react": "^16.13.1",
+    "react-app-polyfill": "^1.0.6",
+    "react-app-rewired": "^2.1.6",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
+    "react-scripts": "3.4.0",
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "browser": "npm link ../common && react-scripts start",
+    "browser": "react-app-rewired start",
     "browser:mock": "REACT_APP_AURA_MOCK_CLIENT=true npm run browser",
-    "build": "npm link ../common && react-scripts build",
-    "build:mock": "REACT_APP_AURA_MOCK_CLIENT=true npm link ../common && react-scripts build",
-    "cleanup": "rm -rf node_modules; rm package-lock.json",
-    "eject": "react-scripts eject",
-    "deploy": "./scripts/deploy-to-ghpages.js"
+    "build": "react-app-rewired build",
+    "build:mock": "REACT_APP_AURA_MOCK_CLIENT=true react-app-rewired build",
+    "cleanup": "rm -rf node_modules || true; rm package-lock.json || true"
   },
   "eslintConfig": {
     "extends": "react-app"

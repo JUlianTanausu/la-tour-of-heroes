@@ -13,7 +13,7 @@ const close = {
 		"movistar-home",
 		"set-top-box-haac"
 	],
-	"text": "Saliendo de AirEuropa",
+	"text": "Saliendo de la Living App",
 	"screen": "close"
 };
 
