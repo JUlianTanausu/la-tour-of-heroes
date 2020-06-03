@@ -1,0 +1,54 @@
+#home-wrapper {
+
+    >div {
+        height: 1080px;
+        width: 960px;
+        text-align: center;
+        line-height: 1080px;
+        box-sizing: content-box;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    #heroes-wrapper {
+        background-color: #FFF257;
+    }
+
+    #villains-wrapper {
+        background-color: #E01F5D;
+        left: 960px;
+    }
+
+    .home-button {
+        font-size: 50px;
+        font-family: inherit;
+        height: 90px;
+        width: 50%;
+        line-height: 90px;
+        border: none;
+
+        &.focused-home {
+            position: relative;
+            bottom: 30px;
+        }
+
+        &.focused-home::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            box-shadow: 10px 10px 0px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        &#heroes-button {
+            box-shadow: 20px 20px #1FB7E0, -20px -20px #E01F5D;
+        }
+
+        &#villains-button {
+            box-shadow: 20px 20px #1FB7E0, -20px -20px #FFF257;
+        }
+    }
+}

@@ -1,6 +1,6 @@
 import 'react-app-polyfill/stable';
 import './index.css';
-import { init, Channel } from 'la-web-sdk';
+import { init, Channel } from '@telefonica/la-web-sdk';
 import { script } from '../../common'
 ;
 

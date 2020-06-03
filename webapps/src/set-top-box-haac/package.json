@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "la-web-sdk": "Telefonica/aura-la-web-sdk#react"
+    "@telefonica/la-web-sdk": "2.0.0-alpha.1"
   },
   "devDependencies": {
     "@types/react": "^16.9.22",

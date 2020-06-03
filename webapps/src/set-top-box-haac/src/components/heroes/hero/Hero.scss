@@ -1,0 +1,51 @@
+.hero-wrapper {
+
+    &.focused:before,
+    &.focused:after {
+        color: white;
+        text-shadow: 10px 10px black;
+    }
+
+    &:before,
+    &:after {
+        position: fixed;
+        top: calc(1080px/2 - 60px);
+        font-size: 120px;
+        color: rgba(255, 255, 255, 0.25);
+        text-shadow: 10px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    &:before {
+        left: 39px;
+        content: '<';
+    }
+
+    &:after {
+        right: 39px;
+        content: '>';
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 125px;
+    }
+
+    img {
+        height: 500px;
+        position: fixed;
+        left: 226px;
+        top: 320px;
+    }
+
+    .hero-info {
+        position: fixed;
+        top: 320px;
+        left: 1000px;
+        font-size: 50px;
+        max-width: 700px;
+
+        li+li {
+            margin-top: 15px;
+        }
+    }
+}
